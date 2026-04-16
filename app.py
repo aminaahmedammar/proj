@@ -10,8 +10,13 @@ def send():
     data = request.json
     return "OK"
 
-@app.route("/get")
+@app.route("/get", methods=["GET"])
 def get():
     return jsonify(data)
 
-app.run(host="0.0.0.0", port=10000)
+@app.route("/")
+def home():
+    return "Server is running"
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=10000)
